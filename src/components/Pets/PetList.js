@@ -16,7 +16,6 @@ export default function PetList() {
       {pets.map((pet) => (
         <h1 key={pet.id}>{pet.name}</h1>
       ))}
-      {console.log('pets', pets)};
       <PetForm />
     </div>
   );

@@ -48,7 +48,6 @@ export async function signInUser(email, password) {
   });
   const data = await resp.json();
   if (resp.ok) {
-    console.log('it was okay');
     location.replace('/');
   } else {
     console.error(data.message);
