@@ -1,6 +1,6 @@
 import './App.css';
 import Nav from './components/Nav/Nav.js';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Auth from './components/Auth/Auth.js';
 import { useUser } from './context/UserContext.js';
 import PetList from './components/Pets/PetList.js';

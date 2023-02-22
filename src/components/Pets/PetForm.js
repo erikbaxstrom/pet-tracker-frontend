@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { addPet } from '../../services/pets.js';
 import { usePets } from '../../hooks/usePet.js';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function PetForm() {
   //   name = '',
