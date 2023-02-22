@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { addPet } from '../../services/pets.js';
+import { usePets } from '../../hooks/usePet.js';
+import { Redirect, useHistory } from 'react-router-dom';
 
 export default function PetForm() {
   //   name = '',
@@ -12,11 +14,22 @@ export default function PetForm() {
   const [emergencyContactInput, setEmergencyContactInput] = useState('');
   const [vetInput, setVetInput] = useState('');
   const [notesInput, setNotesInput] = useState('');
+  const { setPets } = usePets('');
+  const history = useHistory();
 
   const handleNewPet = async () => {
     try {
-      await addPet(nameInput, breedInput, emergencyContactInput, vetInput, notesInput);
+      const newPet = await addPet(
+        nameInput,
+        breedInput,
+        emergencyContactInput,
+        vetInput,
+        notesInput
+      );
       // redirect to pet list
+      //adds new pet to state
+      setPets((prevPets) => [...prevPets, newPet]);
+      history.push('/');
     } catch (e) {
       console.error(e.message);
     }
