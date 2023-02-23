@@ -1,26 +1,19 @@
 import './App.css';
 import Nav from './components/Nav/Nav.js';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Auth from './components/Auth/Auth.js';
-import { useUser } from './context/UserContext.js';
 import PetList from './components/Pets/PetList.js';
+import PetForm from './components/Pets/PetForm.js';
 
 function App() {
-  const { user } = useUser();
-  const history = useHistory();
-  if (!user) {
-    history.push('/auth/sign-in');
-    // return;
-  }
-
   return (
     <div className="App">
       <Nav />
       <Switch>
         <Route path="/auth/:type" component={Auth} />
-        <Route exact path="/pets" component={PetList}>
-          {/* <>{user && <Redirect to="/" />}</> */}
-        </Route>
+        <Route exact path="/pets/new" component={PetForm} />
+        <Route exact path="/pets" component={PetList} />
+        <Route exact path="/" component={Auth} />
       </Switch>
     </div>
   );
