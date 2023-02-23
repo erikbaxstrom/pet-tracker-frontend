@@ -1,9 +1,4 @@
 import { signInUser, signOutUser, signUpUser } from '../fetch-utils.js';
-// import { client } from './client';
-
-// export function getUser() {
-//   return client.auth.currentUser;
-// }
 
 // const BASE_URL = 'http://localhost:7890';
 const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
@@ -21,6 +16,7 @@ export async function getUser() {
     const user = await resp.json();
     return user;
   }
+  // return null;
 }
 
 export async function authUser(email, password, type) {
