@@ -1,9 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { useUser } from '../../context/UserContext.js';
-import PetForm from './PetForm.js';
+import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePet.js';
-// import PetCard from './PetCard.js';
 
 export default function PetList() {
   const { pets } = usePets();
@@ -16,7 +14,6 @@ export default function PetList() {
       {pets.map((pet) => (
         <h1 key={pet.id}>{pet.name}</h1>
       ))}
-      <PetForm />
     </div>
   );
 }

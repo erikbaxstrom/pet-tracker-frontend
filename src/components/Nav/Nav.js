@@ -1,4 +1,4 @@
-import { useUser } from '../../context/UserContext.js';
+import { useUser } from '../../hooks/useUser.js';
 import { signOut } from '../../services/auth.js';
 
 export default function Nav() {
@@ -18,6 +18,9 @@ export default function Nav() {
       <div>
         {user && (
           <>
+            <div>
+              <a href="/pets/new">Add a Pet</a>
+            </div>
             <div>Hello {user.email}</div>
             <button onClick={handleLogout}>Sign Out</button>
           </>
