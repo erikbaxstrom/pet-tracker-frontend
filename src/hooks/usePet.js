@@ -3,6 +3,7 @@ import { fetchPets } from '../services/pets.js';
 
 export function usePets() {
   const [pets, setPets] = useState([]);
+  const [detail, setDetail] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -20,5 +21,5 @@ export function usePets() {
     fetchData();
   }, []);
 
-  return { pets, setPets, error, loading };
+  return { pets, setPets, error, loading, detail, setDetail };
 }
