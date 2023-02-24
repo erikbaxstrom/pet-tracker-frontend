@@ -1,7 +1,8 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePet.js';
+// import PetCard from './PetCard.js';
 
 export default function PetList() {
   const { pets } = usePets();
@@ -12,7 +13,9 @@ export default function PetList() {
   return (
     <div>
       {pets.map((pet) => (
-        <h1 key={pet.id}>{pet.name}</h1>
+        <h1 key={pet.id}>
+          <NavLink to={`/pets/${pet.id}`}>{pet.name}</NavLink>
+        </h1>
       ))}
     </div>
   );
