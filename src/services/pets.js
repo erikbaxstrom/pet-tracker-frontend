@@ -35,3 +35,20 @@ export async function fetchPets() {
     console.error(data.message);
   }
 }
+
+export async function fetchPetById(id) {
+  const resp = await fetch(`${BASE_URL}/api/v1/pets/${id}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+    },
+    credentials: 'include',
+  });
+  const data = await resp.json();
+  if (resp.ok) {
+    return data;
+  } else {
+    console.error(data.message);
+  }
+}
