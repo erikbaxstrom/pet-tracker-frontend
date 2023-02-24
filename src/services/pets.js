@@ -52,3 +52,21 @@ export async function fetchPetById(id) {
     console.error(data.message);
   }
 }
+
+export async function updatePet(id, name, breed, emergency_contact, vet, notes) {
+  const resp = await fetch(`${BASE_URL}/api/v1/pets/${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify({ name, breed, emergency_contact, vet, notes }),
+  });
+  const data = await resp.json();
+  if (resp.ok) {
+    return data;
+  } else {
+    console.error(data.message);
+  }
+}
