@@ -60,8 +60,8 @@ export async function updatePet(id, name, breed, emergency_contact, vet, notes) 
       Accept: 'application/json',
       'Content-type': 'application/json',
     },
-    credentials: 'include',
     body: JSON.stringify({ name, breed, emergency_contact, vet, notes }),
+    credentials: 'include',
   });
   const data = await resp.json();
   if (resp.ok) {
