@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react';
-import { fetchPets } from '../services/pets.js';
+import { fetchPetById } from '../services/pets.js';
 
-export function usePets() {
-  const [pets, setPets] = useState([]);
-  const [detail, setDetail] = useState('');
+export default function usePet(id) {
+  const [detail, setDetail] = useState({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const data = await fetchPets();
-        setPets(data);
-        setLoading(false);
+        const data = await fetchPetById(id);
+        // console.log('data', data);
+        setDetail(data);
       } catch (e) {
         setError(e.message);
         setLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
-  return { pets, setPets, error, loading, detail, setDetail };
+  return { detail, setDetail, loading, setLoading, error, setError };
 }
