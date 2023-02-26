@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
-import { usePets } from '../../hooks/usePet.js';
+import { usePets } from '../../hooks/usePets.js';
 // import PetCard from './PetCard.js';
 
 export default function PetList() {
