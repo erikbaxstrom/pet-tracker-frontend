@@ -61,7 +61,9 @@ export default function PetForm({
         onClick={() => {
           submitHandler(nameInput, breedInput, emergencyContactInput, vetInput, notesInput);
         }}
-      />
+      >
+        Submit
+      </button>
     </div>
   );
 }
