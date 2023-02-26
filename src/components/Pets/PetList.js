@@ -14,7 +14,10 @@ export default function PetList() {
     <div>
       {pets.map((pet) => (
         <h1 key={pet.id}>
-          <NavLink to={`/pets/${pet.id}`}>{pet.name}</NavLink>
+          <NavLink to={`/pets/${pet.id}`}>
+            <img src={`/assets/${pet.breed}.png`}></img>
+            {pet.name}
+          </NavLink>
         </h1>
       ))}
     </div>
