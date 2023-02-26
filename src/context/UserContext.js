@@ -1,22 +1,32 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getUser } from '../services/auth.js';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const currentUser = getUser();
-  const [user, setUser] = useState(currentUser);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUser();
+        setUser(data);
+        setLoading(false);
+      } catch (e) {
+        setError(e.message);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ user, setUser, error, setError, loading, setLoading }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-const useUser = () => {
-  const data = useContext(UserContext);
-
-  if (!data) {
-    throw new Error('useUser must be wrapped in a UserProvider');
-  }
-  return data;
-};
-
-export { UserProvider, useUser };
+export { UserProvider, UserContext };
