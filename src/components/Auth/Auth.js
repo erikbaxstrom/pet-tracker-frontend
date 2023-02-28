@@ -23,17 +23,19 @@ export default function Auth() {
 
   return (
     <>
-      <header className="authHeader">hi</header>
+      <header className="authHeader">
+        <div className="auth-img"></div>
+        <div className="sign-in-sign-out">
+          <NavLink to="/auth/sign-in" className="signInLink">
+            Sign-in
+          </NavLink>
+          <NavLink to="/auth/sign-up" className="signUpLink">
+            Sign-up
+          </NavLink>
+        </div>
+      </header>
       <div className="authBackground">
         <div className="auth-container">
-          <div className="sign-in-sign-out">
-            <NavLink to="/auth/sign-in" className="signInLink">
-              Sign-in
-            </NavLink>
-            <NavLink to="/auth/sign-up" className="signUpLink">
-              Sign-up
-            </NavLink>
-          </div>
           <div className="email-container">
             <label>Email</label>
             <input
@@ -44,7 +46,7 @@ export default function Auth() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
+          <div className="password-container">
             <label>Password</label>
             <input
               className="input"
