@@ -70,3 +70,21 @@ export async function updatePet(id, name, breed, emergency_contact, vet, notes) 
     console.error(data.message);
   }
 }
+
+export async function addOwner(petId, email) {
+  const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+    credentials: 'include',
+  });
+  const data = await resp.json();
+  if (resp.ok) {
+    return data;
+  } else {
+    console.error(data.message);
+  }
+}
