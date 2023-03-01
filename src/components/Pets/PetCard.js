@@ -31,10 +31,16 @@ export default function PetCard({ email = '' }) {
   const handleOwner = async () => {
     try {
       const newOwner = await addOwner(detail.id, emailInput);
+      console.log('newOwner', newOwner);
       setOwners((prevOwners) => [...prevOwners, newOwner]);
     } catch (e) {
       console.error(e.message);
     }
+  };
+
+  const handleDelete = async (petId, deletedOwner) => {
+    setOwners(owners.filter((owner) => owner.user_id !== deletedOwner.user_id));
+    await deleteOwner(petId, deletedOwner.user_id);
   };
 
   console.log('first owner', owners[0]);
@@ -49,7 +55,8 @@ export default function PetCard({ email = '' }) {
       {owners.map((owner) => (
         <div key={owner.email}>
           <p>{owner.email}</p>
-          <button onClick={async () => await deleteOwner(detail.id, owner.user_id)}>X</button>
+          {console.log('user_id', owner.user_id)}
+          <button onClick={async () => await handleDelete(detail.id, owner)}>X</button>
         </div>
       ))}
 
