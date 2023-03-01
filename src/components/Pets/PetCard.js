@@ -3,14 +3,16 @@ import { NavLink, useParams } from 'react-router-dom';
 // import { usePets } from '../../hooks/usePets.js';
 // import { fetchPetById } from '../../services/pets.js';
 import usePet from '../../hooks/usePet.js';
-import { addOwner } from '../../services/pets.js';
-import useOwner from '../../hooks/useOwner.js';
+import { addOwner, deleteOwner } from '../../services/owners.js';
+// import useOwners from '../../hooks/useOwners.js';
+// import OwnerList from './OwnerList.js';
+import useOwners from '../../hooks/useOwners.js';
 
 export default function PetCard({ email = '' }) {
   const { id } = useParams();
   const { detail } = usePet(id);
   const [emailInput, setEmailInput] = useState(email);
-  const { setOwner } = useOwner([]);
+  const { owners, setOwners } = useOwners(id);
   // const { setDetail, detail, setError } = usePets();
 
   // useEffect(() => {
@@ -29,11 +31,13 @@ export default function PetCard({ email = '' }) {
   const handleOwner = async () => {
     try {
       const newOwner = await addOwner(detail.id, emailInput);
-      setOwner((prevOwners) => [...prevOwners, newOwner]);
+      setOwners((prevOwners) => [...prevOwners, newOwner]);
     } catch (e) {
       console.error(e.message);
     }
   };
+
+  console.log('first owner', owners[0]);
 
   return (
     <div>
@@ -42,6 +46,13 @@ export default function PetCard({ email = '' }) {
       <p>Vet: {detail.vet}</p>
       <p>Emergency Contact #: {detail.emergency_contact}</p>
       <p>Notes: {detail.notes}</p>
+      {owners.map((owner) => (
+        <div key={owner.email}>
+          <p>{owner.email}</p>
+          <button onClick={async () => await deleteOwner(detail.id, owner.user_id)}>X</button>
+        </div>
+      ))}
+
       <input
         className="input"
         type="email"
