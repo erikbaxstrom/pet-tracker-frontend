@@ -47,11 +47,12 @@ export async function deleteOwner(petId, user_id) {
     body: JSON.stringify({ user_id: user_id }),
     credentials: 'include',
   });
-  console.log('here i am', resp);
-  const data = await resp.json();
+  //originally we had const data = resp.json(); here, but because a status code is not valid json, we were inherently getting an error regardless.
+  //instead we only want want to await a response if there is an issue?
   if (resp.ok) {
-    return data;
+    return;
   } else {
+    const data = await resp.json();
     console.error(data.message);
   }
 }
