@@ -36,8 +36,6 @@ export async function fetchOwners(petId) {
 }
 
 export async function deleteOwner(petId, user_id) {
-  console.log('petId', petId);
-  console.log('user_id', user_id);
   const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
     method: 'DELETE',
     headers: {
