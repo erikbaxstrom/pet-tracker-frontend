@@ -17,5 +17,6 @@ export default function EditPet() {
       setError(e.message);
     }
   };
-  return <PetForm {...detail} submitHandler={handleSubmit} />;
+
+  return <PetForm key={detail.name} {...detail} submitHandler={handleSubmit} />;
 }
