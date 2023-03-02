@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function PetForm({
   name = '',
@@ -13,6 +14,7 @@ export default function PetForm({
   const [emergencyContactInput, setEmergencyContactInput] = useState(emergency_contact);
   const [vetInput, setVetInput] = useState(vet);
   const [notesInput, setNotesInput] = useState(notes);
+  const history = useHistory();
 
   return (
     <div>
@@ -39,8 +41,9 @@ export default function PetForm({
           submitHandler(nameInput, breedInput, emergencyContactInput, vetInput, notesInput);
         }}
       >
-        Submit
+        Save
       </button>
+      <button onClick={history.goBack}>Cancel</button>
     </div>
   );
 }
