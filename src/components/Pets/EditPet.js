@@ -9,10 +9,12 @@ import { deleteOwner } from '../../services/owners.js';
 export default function EditPet() {
   const { id } = useParams();
   const { detail, setError } = usePet(id);
+  const history = useHistory();
 
   const handleSubmit = async (name, breed, emergency_contact, vet, notes) => {
     try {
       await updatePet(detail.id, name, breed, emergency_contact, vet, notes);
+      history.push('/pets');
     } catch (e) {
       setError(e.message);
     }
@@ -32,8 +34,8 @@ export default function EditPet() {
   };
 
   const handleDelete = async (petId, deletedOwner) => {
-    setOwners(owners.filter((owner) => owner.user_id !== deletedOwner.user_id));
     await deleteOwner(petId, deletedOwner.user_id);
+    setOwners(owners.filter((owner) => owner.user_id !== deletedOwner.user_id));
   };
 
   return (
@@ -53,6 +55,7 @@ export default function EditPet() {
         <input
           className="input"
           type="email"
+          placeholder="Add Owner by Email"
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
         />
