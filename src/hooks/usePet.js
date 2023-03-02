@@ -11,7 +11,6 @@ export default function usePet(id) {
       setLoading(true);
       try {
         const data = await fetchPetById(id);
-        // console.log('data', data);
         setDetail(data);
       } catch (e) {
         setError(e.message);

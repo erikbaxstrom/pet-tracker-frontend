@@ -20,6 +20,11 @@ function App() {
         <Route exact path="/pets/:id" component={PetCard} />
         <Route exact path="/" component={Auth} />
       </Switch>
+      <footer>
+        <a href="https://www.flaticon.com/free-icons/" title="icons">
+          Pet icons by Flaticon
+        </a>
+      </footer>
     </div>
   );
 }

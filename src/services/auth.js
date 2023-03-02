@@ -1,6 +1,5 @@
 import { signInUser, signOutUser, signUpUser } from '../fetch-utils.js';
 
-// const BASE_URL = 'http://localhost:7890';
 const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 export async function getUser() {

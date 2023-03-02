@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePets.js';
-// import PetCard from './PetCard.js';
 
 export default function PetList() {
   const { pets } = usePets();
@@ -15,7 +14,7 @@ export default function PetList() {
       {pets.map((pet) => (
         <h1 key={pet.id}>
           <NavLink to={`/pets/${pet.id}`}>
-            <img src={`/assets/${pet.breed}.png`}></img>
+            <img src={`${pet.breed}.png`}></img>
             {pet.name}
           </NavLink>
         </h1>
