@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import './auth.css';
+import { Button, TextField } from '@mui/material';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -34,30 +35,48 @@ export default function Auth() {
           </NavLink>
         </div>
       </header>
-      <div className="authBackground">
+      <div className="auth-background">
         <div className="auth-container">
           <div className="email-container">
-            <label>Email</label>
-            <input
+            <TextField
+              helperText="Please enter your email"
+              id="email-input"
+              label="Email"
+              variant="filled"
+              defaultValue={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {/* <input
               className="input"
               type="email"
               placeholder="email@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
+            /> */}
           </div>
           <div className="password-container">
-            <label>Password</label>
-            <input
+            <TextField
+              helperText="Please enter your password"
+              id="password-input"
+              label="Password"
+              variant="filled"
+              color="primary"
+              defaultValue={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {/* <input
               className="input"
               type="password"
               placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
           </div>
           <div>
-            <button onClick={submitAuth}>Submit</button>
+            <Button variant="contained" size="large" onClick={submitAuth}>
+              Submit
+            </Button>
+            {/* <button onClick={submitAuth}>Submit</button> */}
           </div>
         </div>
       </div>
