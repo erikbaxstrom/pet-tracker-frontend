@@ -14,7 +14,7 @@ export default function PetList() {
       {pets.map((pet) => (
         <h1 key={pet.id}>
           <NavLink to={`/pets/${pet.id}`}>
-            <img src={`/assets/${pet.breed}.png`}></img>
+            <img src={`${pet.breed}.png`}></img>
             {pet.name}
           </NavLink>
         </h1>
