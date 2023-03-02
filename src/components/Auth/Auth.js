@@ -58,6 +58,7 @@ export default function Auth() {
             <TextField
               helperText="Please enter your password"
               id="password-input"
+              type="password"
               label="Password"
               variant="filled"
               color="primary"
