@@ -19,9 +19,18 @@ export default function PetForm({
   return (
     <div>
       <label>Name</label>
-      <input type="text" value={nameInput} onChange={(e) => setNameInput(e.target.value)} />
+      <input
+        type="text"
+        value={nameInput}
+        placeholder="Name..."
+        onChange={(e) => setNameInput(e.target.value)}
+        required
+      />
       <label>Breed</label>
-      <select value={breedInput} onChange={(e) => setBreedInput(e.target.value)}>
+      <select value={breedInput} onChange={(e) => setBreedInput(e.target.value)} required>
+        <option disabled value="" selected hidden>
+          Choose...
+        </option>
         <option value="dog">Dog</option>
         <option value="cat">Cat</option>
         <option value="pineCone">Pine Cone</option>
@@ -30,10 +39,16 @@ export default function PetForm({
       <input
         type="text"
         value={emergencyContactInput}
+        placeholder="Name/Phone..."
         onChange={(e) => setEmergencyContactInput(e.target.value)}
       />
       <label>Vet</label>
-      <input type="text" value={vetInput} onChange={(e) => setVetInput(e.target.value)} />
+      <input
+        type="text"
+        value={vetInput}
+        placeholder="Name/Phone..."
+        onChange={(e) => setVetInput(e.target.value)}
+      />
       <label>Notes</label>
       <textarea value={notesInput} onChange={(e) => setNotesInput(e.target.value)} />
       <button
