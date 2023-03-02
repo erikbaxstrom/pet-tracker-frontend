@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import usePet from '../../hooks/usePet.js';
-import { addOwner, deleteOwner } from '../../services/owners.js';
 import useOwners from '../../hooks/useOwners.js';
 
 export default function PetCard() {
