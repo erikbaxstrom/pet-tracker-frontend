@@ -46,8 +46,8 @@ export default function EditPet() {
       <div>
         <PetForm key={detail.name} {...detail} submitHandler={handleSubmit} />
       </div>
+      <h2>Owners</h2>
       <div className="owners">
-        <h2>Owners</h2>
         <ul className="owners-list">
           {owners.map((owner) => (
             <li key={owner.email}>
