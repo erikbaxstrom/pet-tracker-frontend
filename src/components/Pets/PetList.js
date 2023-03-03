@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePets.js';
+import './PetList.css';
 
 export default function PetList() {
   const { pets } = usePets();
@@ -10,14 +11,18 @@ export default function PetList() {
     return <Redirect to="/auth/sign-in" />;
   }
   return (
-    <div>
+    <div className="pet-list">
       {pets.map((pet) => (
-        <h1 key={pet.id}>
-          <NavLink to={`/pets/${pet.id}`}>
+        <div className="pet-card" key={pet.id}>
+          <NavLink
+            style={{ textDecoration: 'none', color: 'black' }}
+            className="card-details"
+            to={`/pets/${pet.id}`}
+          >
             <img src={`${pet.breed}.png`}></img>
-            {pet.name}
+            <h3>{pet.name}</h3>
           </NavLink>
-        </h1>
+        </div>
       ))}
     </div>
   );

@@ -1,0 +1,33 @@
+.pet-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  gap: 10px;
+  background-color: #b0bbb0;
+  padding: 20px;
+  border-radius: 3%;
+  height: 30%;
+  width: 600px;
+  margin: auto;
+}
+
+.pet-card {
+  width: 150px;
+  height: 150px;
+  background-color: #c9ffe27e;
+  padding: 10px;
+  border-radius: 8%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-details {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  gap: 4px;
+}
+.pet-card img {
+  width: 50%;
+  margin-top: 8px;
+}

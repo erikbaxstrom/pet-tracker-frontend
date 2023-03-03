@@ -1,0 +1,14 @@
+.detail-container {
+  width: 600px;
+  height: 600px;
+  background-color: #b0bbb0;
+  padding: 10px;
+  border-radius: 2%;
+}
+
+.detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
