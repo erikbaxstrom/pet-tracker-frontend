@@ -10,65 +10,15 @@ html {
   padding: 15px;
   margin: 15px;
   margin-top: 15px;
-}
-
-.signInLink {
-  background-color: #ebbab9;
-  padding: 10px;
-  margin: 30px;
-  border-style: outset;
-  border-color: aliceblue;
-  /* font-variant-caps: small-caps;
-  font-weight: 500; */
-  border-radius: 10%;
-  text-decoration: none;
-  /* text-transform: lowercase; */
-
-  color: darkslategrey;
-}
-
-.signUpLink {
-  background-color: #ebbab9;
-  padding: 10px;
-  margin: 30px;
-  border-style: outset;
-  border-color: aliceblue;
-  /* font-variant-caps: small-caps;
-  font-weight: 500; */
-  border-radius: 10%;
-  text-decoration: none;
-  /* text-transform: lowercase; */
-
-  color: darkslategrey;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .input {
   margin: 20px;
 
   display: inline-block;
-}
-
-.email-container {
-  /* display: inline-table;
-
-  font-variant: small-caps;
-  font-variant-caps: small-caps;
-  font-weight: 500;
-
-  text-transform: lowercase;
-  color: white;
-  text-shadow: 4px 4px 4px#000000; */
-}
-
-.password-container {
-  /* display: inline-block;
-  font-variant: small-caps;
-  font-variant-caps: small-caps;
-  font-weight: 500;
-
-  text-transform: lowercase;
-  color: white;
-  text-shadow: 4px 4px 4px#000000; */
 }
 
 .auth-container {
