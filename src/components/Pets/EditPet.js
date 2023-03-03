@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
 import { addOwner, updatePet } from '../../services/pets.js';
 import PetForm from './PetForm.js';
 import usePet from '../../hooks/usePet.js';
 import useOwners from '../../hooks/useOwners.js';
 import { deleteOwner } from '../../services/owners.js';
+import './EditPet.css';
 
 export default function EditPet() {
   const { id } = useParams();
@@ -44,7 +46,7 @@ export default function EditPet() {
       <div>
         <PetForm key={detail.name} {...detail} submitHandler={handleSubmit} />
       </div>
-      <div>
+      <div className="owners">
         <h2>Owners</h2>
         {owners.map((owner) => (
           <div key={owner.email}>
@@ -52,14 +54,16 @@ export default function EditPet() {
             <button onClick={async () => await handleDelete(detail.id, owner)}>X</button>
           </div>
         ))}
-        <input
-          className="input"
-          type="email"
-          placeholder="Add Owner by Email"
+        <TextField
+          helperText="Add an Owner"
+          label="New Owner"
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
         />
-        <button onClick={() => handleOwner()}>+</button>
+
+        <Button size="small" variant="contained" onClick={() => handleOwner()}>
+          +
+        </Button>
       </div>
     </div>
   );
