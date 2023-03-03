@@ -1,0 +1,13 @@
+.owners {
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  width: 600px;
+  padding: 10px;
+  background-color: #b0bbb0;
+  border-radius: 2%;
+}
+
+.owners-list {
+  list-style-type: none;
+}

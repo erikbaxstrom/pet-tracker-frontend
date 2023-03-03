@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
 import { addOwner, updatePet } from '../../services/pets.js';
 import PetForm from './PetForm.js';
 import usePet from '../../hooks/usePet.js';
 import useOwners from '../../hooks/useOwners.js';
 import { deleteOwner } from '../../services/owners.js';
+import './EditPet.css';
 
 export default function EditPet() {
   const { id } = useParams();
@@ -44,22 +46,28 @@ export default function EditPet() {
       <div>
         <PetForm key={detail.name} {...detail} submitHandler={handleSubmit} />
       </div>
-      <div>
-        <h2>Owners</h2>
-        {owners.map((owner) => (
-          <div key={owner.email}>
-            <p>{owner.email}</p>
-            <button onClick={async () => await handleDelete(detail.id, owner)}>X</button>
-          </div>
-        ))}
-        <input
-          className="input"
-          type="email"
-          placeholder="Add Owner by Email"
+      <h2>Owners</h2>
+      <div className="owners">
+        <ul className="owners-list">
+          {owners.map((owner) => (
+            <li key={owner.email}>
+              <span>{owner.email}</span>
+              <Button size="small" onClick={async () => await handleDelete(detail.id, owner)}>
+                X
+              </Button>
+            </li>
+          ))}
+        </ul>
+        <TextField
+          helperText="Add an Owner"
+          label="New Owner"
           value={emailInput}
           onChange={(e) => setEmailInput(e.target.value)}
         />
-        <button onClick={() => handleOwner()}>+</button>
+
+        <Button size="small" variant="contained" onClick={() => handleOwner()}>
+          +
+        </Button>
       </div>
     </div>
   );
