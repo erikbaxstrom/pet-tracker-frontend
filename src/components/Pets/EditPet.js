@@ -48,12 +48,16 @@ export default function EditPet() {
       </div>
       <div className="owners">
         <h2>Owners</h2>
-        {owners.map((owner) => (
-          <div key={owner.email}>
-            <p>{owner.email}</p>
-            <button onClick={async () => await handleDelete(detail.id, owner)}>X</button>
-          </div>
-        ))}
+        <ul className="owners-list">
+          {owners.map((owner) => (
+            <li key={owner.email}>
+              <span>{owner.email}</span>
+              <Button size="small" onClick={async () => await handleDelete(detail.id, owner)}>
+                X
+              </Button>
+            </li>
+          ))}
+        </ul>
         <TextField
           helperText="Add an Owner"
           label="New Owner"
