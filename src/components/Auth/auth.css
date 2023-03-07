@@ -17,13 +17,12 @@ html {
 
 .input {
   margin: 20px;
-
   display: inline-block;
 }
 
 .auth-container {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   height: 300px;
   width: 300px;
   background-color: #b0bbb0;
