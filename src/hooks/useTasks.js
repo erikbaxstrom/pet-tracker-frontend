@@ -19,5 +19,5 @@ export function useTasks() {
     };
     fetchData();
   }, []);
-  return { tasks, error, loading };
+  return { tasks, setTasks, error, setError, loading };
 }
