@@ -11,7 +11,6 @@ export async function fetchTasks() {
   });
   const data = await resp.json();
   if (resp.ok) {
-    console.log('data!!', data);
     return data;
   } else {
     console.error(data.message);
