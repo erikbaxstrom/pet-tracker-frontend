@@ -71,10 +71,10 @@ export default function PetCard() {
             <p>{owner.email}</p>
           </div>
         ))}
+        <Button variant="contained" size="medium" component={NavLink} to={`/pets/edit/${id}`}>
+          Edit Pet
+        </Button>
       </div>
-      <Button variant="contained" size="medium">
-        <NavLink to={`/pets/edit/${id}`}>Edit Pet</NavLink>
-      </Button>
     </div>
   );
 }
