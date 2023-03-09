@@ -121,7 +121,7 @@ export default function PetCard() {
                   <b>Time</b>
                 </TableCell>
                 <TableCell>
-                  <b>Complete</b>
+                  <b>Delete</b>
                 </TableCell>
               </TableRow>
             </TableHead>
