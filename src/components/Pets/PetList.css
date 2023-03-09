@@ -40,3 +40,8 @@
   width: 600px;
   margin: 20px auto;
 }
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+}
