@@ -16,7 +16,7 @@ import {
   TableRow,
   TextField,
 } from '@mui/material';
-import { addTask, updateTask } from '../../services/tasks.js';
+import { addTask, deleteTask, updateTask } from '../../services/tasks.js';
 import dayjs from 'dayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
 
@@ -33,13 +33,17 @@ export default function PetList() {
     return <Redirect to="/auth/sign-in" />;
   }
 
-  const handleDeleteTask = (task) => {
-    console.log('deleting', task);
+  const handleDeleteTask = async (taskToDelete) => {
+    try {
+      await deleteTask(taskToDelete.id);
+      setTasks(tasks.filter((task) => task.id !== taskToDelete.id));
+    } catch (e) {
+      console.error(e.message);
+    }
   };
 
   const handleAddTask = async () => {
     try {
-      // call service
       const newTask = await addTask({
         petId: taskPetInput,
         description: taskDescriptionInput,
@@ -52,7 +56,6 @@ export default function PetList() {
     } catch (e) {
       console.error(e.message);
     }
-    //reset inputs
   };
 
   const handleComplete = async (taskToUpdate) => {
