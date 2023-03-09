@@ -50,6 +50,7 @@ export default function PetList() {
         time: taskTimeInput,
         is_complete: false,
       });
+      newTask.pet_name = pets.find((pet) => pet.id === taskPetInput).name;
       setTasks((prevTasks) => [...prevTasks, newTask]);
       setTaskDescriptionInput('');
       setTaskTimeInput(dayjs());
