@@ -105,7 +105,7 @@ export default function PetCard() {
           Edit Pet
         </Button>
       </div>
-      <h2>Tasks</h2>
+      {/* <h2>Tasks</h2>
       <div className="task-list">
         <TableContainer>
           <Table sx={{ minWidth: 500 }} aria-label="simple table">
@@ -149,7 +149,7 @@ export default function PetCard() {
         <Button size="small" variant="contained" onClick={() => handleAddTask()}>
           +
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
