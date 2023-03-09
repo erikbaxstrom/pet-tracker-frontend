@@ -75,6 +75,12 @@ export default function PetList() {
       setError(e.message);
     }
   };
+
+  const formatDate = (utcDate) => {
+    const localDate = new Date(utcDate).toLocaleString();
+    return localDate;
+  };
+
   return (
     <>
       <h2>My Pets</h2>
@@ -101,7 +107,12 @@ export default function PetList() {
             value={taskDescriptionInput}
             onChange={(e) => setTaskDescriptionInput(e.target.value)}
           />
-          <DateTimePicker value={taskTimeInput} onChange={(e) => setTaskTimeInput(e)} />
+          <DateTimePicker
+            value={taskTimeInput}
+            onChange={(e) => {
+              setTaskTimeInput(e);
+            }}
+          />
           <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)}>
             {pets.map((pet) => (
               <MenuItem key={pet.id} value={pet.id}>
@@ -124,7 +135,7 @@ export default function PetList() {
                   <b>Task</b>
                 </TableCell>
                 <TableCell>
-                  <b>Time</b>
+                  <b>When</b>
                 </TableCell>
                 <TableCell>
                   <b>Complete</b>
@@ -139,7 +150,7 @@ export default function PetList() {
                 <TableRow key={task.id}>
                   <TableCell>{task.pet_name}</TableCell>
                   <TableCell>{task.description}</TableCell>
-                  <TableCell>{task.time}</TableCell>
+                  <TableCell>{formatDate(task.time)}</TableCell>
                   <TableCell>
                     <Button onClick={async () => await handleComplete(task)}>
                       {task.is_complete ? 'Completed' : '✅'}
