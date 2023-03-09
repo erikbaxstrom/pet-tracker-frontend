@@ -1,27 +1,59 @@
-import React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePets.js';
 import './PetList.css';
 import { useTasks } from '../../hooks/useTasks.js';
 import {
   Button,
+  MenuItem,
+  Select,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
 } from '@mui/material';
-import { updateTask } from '../../services/tasks.js';
+import { addTask, updateTask } from '../../services/tasks.js';
+import dayjs from 'dayjs';
+import { DateTimePicker } from '@mui/x-date-pickers';
 
 export default function PetList() {
   const { pets } = usePets();
   const { user } = useUser();
   const { tasks, setError, setTasks } = useTasks();
+
+  const [taskDescriptionInput, setTaskDescriptionInput] = useState('');
+  const [taskPetInput, setTaskPetInput] = useState('');
+  const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
+
   if (!user) {
     return <Redirect to="/auth/sign-in" />;
   }
+
+  const handleDeleteTask = (task) => {
+    console.log('deleting', task);
+  };
+
+  const handleAddTask = async () => {
+    try {
+      // call service
+      const newTask = await addTask({
+        petId: taskPetInput,
+        description: taskDescriptionInput,
+        time: taskTimeInput,
+        is_complete: false,
+      });
+      setTasks((prevTasks) => [...prevTasks, newTask]);
+      setTaskDescriptionInput('');
+      setTaskTimeInput(dayjs());
+    } catch (e) {
+      console.error(e.message);
+    }
+    //reset inputs
+  };
 
   const handleComplete = async (taskToUpdate) => {
     let indexToUpdate = null;
@@ -41,6 +73,7 @@ export default function PetList() {
   };
   return (
     <>
+      <h2>My Pets</h2>
       <div className="pet-list">
         {pets.map((pet) => (
           <div className="pet-card" key={pet.id}>
@@ -55,8 +88,27 @@ export default function PetList() {
           </div>
         ))}
       </div>
-
+      <h2>Tasks</h2>
       <div className="task-list">
+        <div className="task-form">
+          <TextField
+            helperText="Add Task"
+            label="New Task"
+            value={taskDescriptionInput}
+            onChange={(e) => setTaskDescriptionInput(e.target.value)}
+          />
+          <DateTimePicker value={taskTimeInput} onChange={(e) => setTaskTimeInput(e)} />
+          <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)}>
+            {pets.map((pet) => (
+              <MenuItem key={pet.id} value={pet.id}>
+                {pet.name}
+              </MenuItem>
+            ))}
+          </Select>
+          <Button size="small" variant="contained" onClick={() => handleAddTask()}>
+            +
+          </Button>
+        </div>
         <TableContainer>
           <Table sx={{ minWidth: 500 }} aria-label="simple table">
             <TableHead>
