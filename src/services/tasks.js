@@ -17,6 +17,24 @@ export async function fetchTasks() {
   }
 }
 
+export async function addTask(petId, task) {
+  const resp = await fetch(`${BASE_URL}/api/v1/tasks/pet/${petId}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify({ description: task.description, time: task.time }),
+  });
+  const data = await resp.json();
+  if (resp.ok) {
+    return data;
+  } else {
+    console.error(data.message);
+  }
+}
+
 export async function updateTask(task) {
   const resp = await fetch(`${BASE_URL}/api/v1/tasks/${task.id}`, {
     method: 'PUT',
