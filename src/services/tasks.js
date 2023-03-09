@@ -17,8 +17,9 @@ export async function fetchTasks() {
   }
 }
 
-export async function addTask(petId, task) {
-  const resp = await fetch(`${BASE_URL}/api/v1/tasks/pet/${petId}`, {
+export async function addTask(task) {
+  console.log('addTask task:', task);
+  const resp = await fetch(`${BASE_URL}/api/v1/tasks/pet/${task.petId}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
