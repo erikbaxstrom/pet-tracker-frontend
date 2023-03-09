@@ -29,18 +29,16 @@ export default function PetList() {
       if (task.id === taskToUpdate.id) {
         task.is_complete = !task.is_complete;
         indexToUpdate = index;
-        return task;
       }
+      return task;
     });
     try {
       await updateTask(tasks[indexToUpdate]);
+      setTasks(updatedTasks);
     } catch (e) {
       setError(e.message);
     }
-    // set state / push changes to db
-    setTasks(updatedTasks);
   };
-
   return (
     <>
       <div className="pet-list">
