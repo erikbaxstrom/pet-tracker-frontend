@@ -125,6 +125,9 @@ export default function PetList() {
                 <TableCell>
                   <b>Complete</b>
                 </TableCell>
+                <TableCell>
+                  <b>Delete</b>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -137,6 +140,9 @@ export default function PetList() {
                     <Button onClick={async () => await handleComplete(task)}>
                       {task.is_complete ? 'Completed' : '✅'}
                     </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button onClick={async () => await handleDeleteTask(task)}>X</Button>
                   </TableCell>
                 </TableRow>
               ))}
