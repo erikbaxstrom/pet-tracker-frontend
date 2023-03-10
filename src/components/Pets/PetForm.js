@@ -57,11 +57,11 @@ export default function PetForm({
             open
             select
           >
-            <MenuItem value="dog">Dog</MenuItem>
-            <MenuItem value="cat">Cat</MenuItem>
-            <MenuItem value="fish">Fish</MenuItem>
-            <MenuItem value="reptile">Reptile</MenuItem>
-            <MenuItem value="pineCone">Pine Cone</MenuItem>
+            <MenuItem value="Dog">Dog</MenuItem>
+            <MenuItem value="Cat">Cat</MenuItem>
+            <MenuItem value="Fish">Fish</MenuItem>
+            <MenuItem value="Reptile">Reptile</MenuItem>
+            <MenuItem value="Pine Cone">Pine Cone</MenuItem>
           </TextField>
           {/* <label>Breed</label>
 
