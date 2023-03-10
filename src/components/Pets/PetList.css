@@ -31,3 +31,18 @@
   width: 50%;
   margin-top: 8px;
 }
+
+.task-list {
+  background-color: #b0bbb0;
+  padding: 20px;
+  border-radius: 3%;
+  height: 30%;
+  width: 600px;
+  margin: 20px auto;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
