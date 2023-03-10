@@ -51,7 +51,10 @@ export default function PetList() {
         is_complete: false,
       });
       newTask.pet_name = pets.find((pet) => pet.id === taskPetInput).name;
-      setTasks((prevTasks) => [...prevTasks, newTask]);
+      const newTaskList = [...tasks];
+      const insertIndex = newTaskList.findIndex((obj) => obj.time > newTask.time);
+      newTaskList.splice(insertIndex === -1 ? newTaskList.length : insertIndex, 0, newTask);
+      setTasks(newTaskList);
       setTaskDescriptionInput('');
       setTaskTimeInput(dayjs());
     } catch (e) {
