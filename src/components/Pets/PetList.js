@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Redirect, useParams } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePets.js';
 import './PetList.css';
