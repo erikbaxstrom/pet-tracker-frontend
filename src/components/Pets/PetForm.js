@@ -1,4 +1,4 @@
-import { Button, MenuItem, TextField } from '@mui/material';
+import { Button, FormControl, MenuItem, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './PetForm.css';
@@ -21,17 +21,18 @@ export default function PetForm({
   return (
     <div className="form">
       <div className="form-container">
-        <TextField
-          helperText="Please enter a name"
-          id="email-input"
-          label="Name"
-          variant="filled"
-          defaultValue={nameInput}
-          onChange={(e) => setNameInput(e.target.value)}
-          required
-        />
+        <FormControl>
+          <TextField
+            helperText="Please enter a name"
+            id="email-input"
+            label="Name"
+            variant="filled"
+            defaultValue={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
+            required
+          />
 
-        {/* <input
+          {/* <input
         type="text"
         value={nameInput}
         placeholder="Name..."
@@ -39,76 +40,85 @@ export default function PetForm({
         required
       /> */}
 
-        <TextField
-          helperText="Please select a breed"
-          id="breed-select"
-          label="Breed"
-          variant="filled"
-          value={breedInput}
-          onChange={(e) => setBreedInput(e.target.value)}
-          required
-          open
-          select
-        >
-          <MenuItem value="dog">Dog</MenuItem>
-          <MenuItem value="cat">Cat</MenuItem>
-          <MenuItem value="pineCone">Pine Cone</MenuItem>
-        </TextField>
-        {/* <label>Breed</label>
+          <TextField
+            helperText="Please select a breed"
+            id="breed-select"
+            label="Breed"
+            variant="filled"
+            value={breedInput}
+            onChange={(e) => setBreedInput(e.target.value)}
+            sx={{
+              '.css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input': {
+                textAlign: 'left',
+              },
+            }}
+            // sx={{ input: { textAlign: 'left' } }}
+            required
+            open
+            select
+          >
+            <MenuItem value="dog">Dog</MenuItem>
+            <MenuItem value="cat">Cat</MenuItem>
+            <MenuItem value="fish">Fish</MenuItem>
+            <MenuItem value="reptile">Reptile</MenuItem>
+            <MenuItem value="pineCone">Pine Cone</MenuItem>
+          </TextField>
+          {/* <label>Breed</label>
 
 <select value={breedInput} onChange={(e) => setBreedInput(e.target.value)} required>
-        <option disabled value="" selected hidden>
-        Choose...
-        </option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="pineCone">Pine Cone</option>
-      </select> */}
+<option disabled value="" selected hidden>
+Choose...
+</option>
+<option value="dog">Dog</option>
+<option value="cat">Cat</option>
+<option value="pineCone">Pine Cone</option>
+</select> */}
 
-        <TextField
-          helperText="Please enter a phone number"
-          id="emergency-contact-input"
-          label="Emergency Contact"
-          variant="filled"
-          defaultValue={emergencyContactInput}
-          onChange={(e) => setEmergencyContactInput(e.target.value)}
-          required
-        />
+          <TextField
+            helperText="Please enter a phone number"
+            id="emergency-contact-input"
+            label="Emergency Contact"
+            variant="filled"
+            defaultValue={emergencyContactInput}
+            onChange={(e) => setEmergencyContactInput(e.target.value)}
+            required
+          />
 
-        {/*       
+          {/*       
       <label>Emergency Contact</label>
       <input
       type="text"
       value={emergencyContactInput}
       placeholder="Name/Phone..."
       onChange={(e) => setEmergencyContactInput(e.target.value)}
-      /> */}
+    /> */}
 
-        <TextField
-          helperText="Please enter a Vet Clinic"
-          id="vet-input"
-          label="Vet clinic"
-          variant="filled"
-          defaultValue={vetInput}
-          onChange={(e) => setVetInput(e.target.value)}
-          required
-        />
-        {/* <input
+          <TextField
+            helperText="Please enter a Vet Clinic"
+            id="vet-input"
+            label="Vet clinic"
+            variant="filled"
+            defaultValue={vetInput}
+            onChange={(e) => setVetInput(e.target.value)}
+            required
+          />
+          {/* <input
         type="text"
         value={vetInput}
         placeholder="Name/Phone..."
         onChange={(e) => setVetInput(e.target.value)}
       /> */}
-        <TextField
-          helperText="enter additional info here"
-          id="notes-input"
-          label="Notes"
-          variant="filled"
-          defaultValue={notesInput}
-          onChange={(e) => setNotesInput(e.target.value)}
-          required
-          multiline
-        />
+          <TextField
+            helperText="enter additional info here"
+            id="notes-input"
+            label="Notes"
+            variant="filled"
+            defaultValue={notesInput}
+            onChange={(e) => setNotesInput(e.target.value)}
+            required
+            multiline
+          />
+        </FormControl>
         <div className="button-container">
           <Button
             variant="contained"
