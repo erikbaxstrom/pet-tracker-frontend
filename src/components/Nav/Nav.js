@@ -3,6 +3,7 @@ import { useUser } from '../../hooks/useUser.js';
 import { signOut } from '../../services/auth.js';
 import { Button, Menu, MenuItem } from '@mui/material';
 import './Nav.css';
+import { NavLink } from 'react-router-dom';
 
 export default function Nav() {
   const { user, setUser } = useUser();
@@ -27,27 +28,17 @@ export default function Nav() {
                   Menu
                 </Button>
                 <Menu {...bindMenu(popupState)}>
-                  <MenuItem onClick={popupState.close}>
-                    <a href="/pets/new">Add a Pet</a>
+                  <MenuItem onClick={popupState.close} component={NavLink} to="/pets/new">
+                    Add a Pet
                   </MenuItem>
-                  <MenuItem onClick={popupState.close}>
-                    <a href="/pets">My Pets</a>
+                  <MenuItem onClick={popupState.close} component={NavLink} to="/pets">
+                    My Pets
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </>
             )}
           </PopupState>
-
-          // <>
-          //   <div>
-          //     <a href="/pets/new">Add a Pet</a>
-          //     <br />
-          //     <a href="/pets">My Pets</a>
-          //   </div>
-          //   <div>Hello {user.email}</div>
-          //   <button onClick={handleLogout}>Sign Out</button>
-          // </>
         )}
       </div>
     </nav>
