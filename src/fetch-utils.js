@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+const BASE_URL = 'http://localhost:7890';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 // export async function getUser() {
 //   const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
@@ -47,6 +47,7 @@ export async function signInUser(email, password) {
     mode: 'cors',
   });
   const data = await resp.json();
+  localStorage.setItem('token', JSON.stringify(data));
   if (resp.ok) {
     location.replace('/');
   } else {
