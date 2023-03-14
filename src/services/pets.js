@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:7890';
-// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'http://localhost:7890';
+const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 export async function addPet(name, breed, emergency_contact, vet, notes) {
   const resp = await fetch(`${BASE_URL}/api/v1/pets`, {

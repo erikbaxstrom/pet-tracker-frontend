@@ -29,7 +29,6 @@ export default function PetList() {
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
 
-  console.log(user);
 
   // if (!user) {
   //   return <Redirect to="/auth/sign-in" />;
