@@ -1,4 +1,4 @@
-import { Button, FormControl, MenuItem, TextField } from '@mui/material';
+import { Button, MenuItem, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './PetForm.css';
