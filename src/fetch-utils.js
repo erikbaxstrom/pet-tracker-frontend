@@ -47,6 +47,7 @@ export async function signInUser(email, password) {
     mode: 'cors',
   });
   const data = await resp.json();
+  localStorage.setItem('token', JSON.stringify(data));
   if (resp.ok) {
     location.replace('/');
   } else {

@@ -9,6 +9,7 @@ export default function Nav() {
   const { user, setUser } = useUser();
 
   const handleLogout = async () => {
+    localStorage.removeItem('token');
     try {
       await signOut();
       setUser(null);

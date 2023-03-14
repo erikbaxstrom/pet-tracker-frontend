@@ -1,4 +1,5 @@
 const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'http://localhost:7890';
 
 export async function fetchTasks() {
   const resp = await fetch(`${BASE_URL}/api/v1/tasks`, {
