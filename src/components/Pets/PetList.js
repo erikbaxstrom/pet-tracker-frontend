@@ -5,8 +5,10 @@ import { usePets } from '../../hooks/usePets.js';
 import './PetList.css';
 import { useTasks } from '../../hooks/useTasks.js';
 import {
+  Backdrop,
   Button,
   MenuItem,
+  Modal,
   Select,
   Table,
   TableBody,
@@ -29,7 +31,7 @@ export default function PetList() {
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
 
-  console.log(user);
+  
 
   // if (!user) {
   //   return <Redirect to="/auth/sign-in" />;
@@ -174,6 +176,14 @@ export default function PetList() {
           </Table>
         </TableContainer>
       </div>
+      {/* <Modal background outline={0} open={loading}>
+        <img src="Dog.png" /> */}
+
+      {/* <Backdrop open={loading} sx={{ backgroundColor: 'white' }}>
+        <img src="Dog.png" />
+      </Backdrop> */}
+      {/* </Modal> */}
+      {/* <Modal disableEnforceFocus /> */}
     </>
   );
 }
