@@ -41,6 +41,12 @@ export async function signInUser(email, password) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // 'Access-Control-Allow-Headers':
+      //   'Authorization, Accept,Origin,Content-Type,X-LS-CORS-Template,X-LS-Auth-Token,X-LS-Auth-User-Token,Content-Type,X-LS-Sync-Result,X-LS-Sequence,token',
+      // 'Access-Control-Allow-Origin': 'https://alch-pet-tracker.herokuapp.com',
+      // 'Access-Control-ExposeHeaders':
+      //   'Authorization, Accept,Origin,Content-Type,X-LS-CORS-Template,X-LS-Auth-Token,X-LS-Auth-User-Token,Content-Type,X-LS-Sync-Result,X-LS-Sequence,token',
+      // 'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify({ email, password }),
     credentials: 'include',
