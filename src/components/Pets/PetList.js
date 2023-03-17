@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import { useUser } from '../../hooks/useUser.js';
 import { usePets } from '../../hooks/usePets.js';
 import './PetList.css';
 import { useTasks } from '../../hooks/useTasks.js';
 import {
-  Backdrop,
   Button,
   MenuItem,
-  Modal,
   Select,
   Table,
   TableBody,
@@ -24,14 +21,11 @@ import { DateTimePicker } from '@mui/x-date-pickers';
 
 export default function PetList() {
   const { pets } = usePets();
-  const { user } = useUser();
   const { tasks, setError, setTasks } = useTasks();
 
   const [taskDescriptionInput, setTaskDescriptionInput] = useState('');
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
-
-  
 
   // if (!user) {
   //   return <Redirect to="/auth/sign-in" />;
