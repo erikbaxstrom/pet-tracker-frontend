@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import './auth.css';
-import { Button, ButtonGroup, TextField } from '@mui/material';
+import { Button, ButtonGroup, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
@@ -33,14 +33,47 @@ export default function Auth() {
   return (
     <>
       <header className="authHeader">
-        <ButtonGroup variant="contained">
-          <Button component={NavLink} to="/auth/sign-in">
+        <ToggleButtonGroup exclusive>
+          <ToggleButton
+            value="sign-in"
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#C9FFE2',
+                color: 'rgba(0, 0, 0, 0.87)',
+              },
+              '&.Mui-selected:hover': {
+                backgroundColor: '#C9FFE2',
+                color: 'rgba(0, 0, 0, 0.87)',
+              },
+            }}
+            selected={type === 'sign-in' ? true : false}
+            color="primary"
+            component={NavLink}
+            to="/auth/sign-in"
+          >
             Sign-in
-          </Button>
-          <Button component={NavLink} to="/auth/sign-up">
+          </ToggleButton>
+          <ToggleButton
+            value="sign-up"
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#C9FFE2',
+                color: 'rgba(0, 0, 0, 0.87)',
+              },
+              '&.Mui-selected:hover': {
+                backgroundColor: '#C9FFE2',
+                color: 'rgba(0, 0, 0, 0.87)',
+              },
+            }}
+            variant="filled"
+            selected={type === 'sign-up' ? true : false}
+            color="primary"
+            component={NavLink}
+            to="/auth/sign-up"
+          >
             Sign-up
-          </Button>
-        </ButtonGroup>
+          </ToggleButton>
+        </ToggleButtonGroup>
         <Button variant="contained" onClick={startDemo}>
           Start Demo
         </Button>
