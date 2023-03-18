@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser.js';
 import './auth.css';
-import { Button, ButtonGroup, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
