@@ -58,6 +58,7 @@ export async function signInUser(email, password) {
     location.replace('/');
   } else {
     console.error(data.message);
+    return { error: data.message };
   }
 }
 
