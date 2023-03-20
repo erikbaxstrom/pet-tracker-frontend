@@ -10,24 +10,33 @@ import './EditPet.css';
 
 export default function EditPet() {
   const { id } = useParams();
-  const { detail, setError } = usePet(id);
+  const { detail, error, setError } = usePet(id);
   const history = useHistory();
+  const [userError, setUserError] = useState('');
 
   const handleSubmit = async (name, breed, emergency_contact, vet, notes) => {
     try {
       await updatePet(detail.id, name, breed, emergency_contact, vet, notes);
       history.push('/pets');
     } catch (e) {
-      setError(e.message);
+      setUserError(e.message);
     }
   };
 
   const [emailInput, setEmailInput] = useState('');
   const { owners, setOwners } = useOwners(id);
 
-  const handleOwner = async () => {
+  const handleOwner = async (e) => {
+    e.preventDefault();
     try {
       const newOwner = await addOwner(detail.id, emailInput);
+      // console.log('newOwner', newOwner);
+      if (newOwner.error) {
+        // console.log('newOwner.error:', newOwner.error);
+        setUserError(newOwner.error);
+        return;
+      }
+      setUserError('');
       setOwners((prevOwners) => [...prevOwners, newOwner]);
       setEmailInput('');
     } catch (e) {
@@ -58,16 +67,21 @@ export default function EditPet() {
             </li>
           ))}
         </ul>
-        <TextField
-          helperText="Add an Owner"
-          label="New Owner"
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-        />
+        <form onSubmit={handleOwner}>
+          <TextField
+            helperText={userError !== '' ? userError : ''}
+            error={userError !== '' ? true : false}
+            label="New Owner"
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            required
+            type="email"
+          />
 
-        <Button size="small" variant="contained" onClick={() => handleOwner()}>
-          +
-        </Button>
+          <Button size="small" variant="contained" type="submit">
+            +
+          </Button>
+        </form>
       </div>
     </div>
   );
