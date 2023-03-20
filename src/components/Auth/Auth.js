@@ -14,7 +14,8 @@ export default function Auth() {
     return <Redirect to="/pets" />;
   }
 
-  const submitAuth = async () => {
+  const submitAuth = async (e) => {
+    e.preventDefault();
     try {
       await logInUser(email, password, type);
     } catch (e) {
@@ -80,7 +81,7 @@ export default function Auth() {
         </Button>
       </header>
       <div className="auth-background">
-        <div className="auth-container">
+        <form className="auth-container" onSubmit={submitAuth}>
           <div className="email-container">
             <TextField
               helperText={error === 'Invalid email' ? error : ''}
@@ -89,7 +90,9 @@ export default function Auth() {
               label="Email"
               variant="filled"
               defaultValue={email}
+              type="email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="password-container">
@@ -103,14 +106,15 @@ export default function Auth() {
               color="primary"
               defaultValue={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div>
-            <Button variant="contained" size="large" onClick={submitAuth}>
+            <Button variant="contained" size="large" type="submit">
               Submit
             </Button>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
