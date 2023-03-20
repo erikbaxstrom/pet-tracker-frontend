@@ -86,5 +86,6 @@ export async function addOwner(petId, email) {
     return data;
   } else {
     console.error(data.message);
+    return { error: data.message };
   }
 }
