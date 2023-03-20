@@ -7,7 +7,7 @@ import { Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/materia
 export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user, logInUser } = useUser();
+  const { user, logInUser, error, setError } = useUser();
   const { type } = useParams();
 
   if (user) {
@@ -19,6 +19,7 @@ export default function Auth() {
       await logInUser(email, password, type);
     } catch (e) {
       console.error(e);
+      setError(e);
     }
   };
 
@@ -82,7 +83,8 @@ export default function Auth() {
         <div className="auth-container">
           <div className="email-container">
             <TextField
-              helperText="Please enter your email"
+              helperText={error === 'Invalid email' ? error : ''}
+              error={error === 'Invalid email' ? true : false}
               id="email-input"
               label="Email"
               variant="filled"
@@ -92,7 +94,8 @@ export default function Auth() {
           </div>
           <div className="password-container">
             <TextField
-              helperText="Please enter your password"
+              helperText={error === 'Invalid password' ? error : ''}
+              error={error === 'Invalid password' ? true : false}
               id="password-input"
               type="password"
               label="Password"
