@@ -27,7 +27,6 @@ export default function PetList() {
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
 
-
   // if (!user) {
   //   return <Redirect to="/auth/sign-in" />;
   // }
@@ -45,7 +44,8 @@ export default function PetList() {
     }
   };
 
-  const handleAddTask = async () => {
+  const handleAddTask = async (e) => {
+    e.preventDefault();
     try {
       const newTask = await addTask({
         petId: taskPetInput,
@@ -106,12 +106,13 @@ export default function PetList() {
       </div>
       <h2>Tasks</h2>
       <div className="task-list">
-        <div className="task-form">
+        <form className="task-form" onSubmit={handleAddTask}>
           <TextField
             helperText="Add Task"
             label="New Task"
             value={taskDescriptionInput}
             onChange={(e) => setTaskDescriptionInput(e.target.value)}
+            required
           />
           <DateTimePicker
             value={taskTimeInput}
@@ -119,17 +120,17 @@ export default function PetList() {
               setTaskTimeInput(e);
             }}
           />
-          <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)}>
+          <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)} required>
             {pets.map((pet) => (
               <MenuItem key={pet.id} value={pet.id}>
                 {pet.name}
               </MenuItem>
             ))}
           </Select>
-          <Button size="small" variant="contained" onClick={() => handleAddTask()}>
+          <Button size="small" variant="contained" type="submit">
             +
           </Button>
-        </div>
+        </form>
         <TableContainer>
           <Table sx={{ minWidth: 500 }} aria-label="simple table">
             <TableHead>
