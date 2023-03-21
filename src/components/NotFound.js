@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div id="not-found">
       <h2>Page Not Found</h2>
-      <img src="lost-in-box.png" />
+      <img src="/lost-in-box.png" />
       <Button variant="contained" component={NavLink} to="/">
         Take me Home
       </Button>
