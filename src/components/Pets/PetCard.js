@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import usePet from '../../hooks/usePet.js';
 import useOwners from '../../hooks/useOwners.js';
 import './PetCard.css';
@@ -13,9 +13,18 @@ import {
 } from '@mui/material';
 
 export default function PetCard() {
+  const history = useHistory();
   const { id } = useParams();
-  const { detail } = usePet(id);
+  const { detail, error, loading } = usePet(id);
   const { owners } = useOwners(id);
+
+  if (loading) {
+    return <img src="fish.png" />;
+  }
+
+  if (error) {
+    history.push('/not-found/');
+  }
 
   return (
     <div className="detail">
