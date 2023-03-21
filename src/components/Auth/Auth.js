@@ -49,6 +49,7 @@ export default function Auth() {
       </header>
       <div className="auth-background">
         <form className="auth-container" onSubmit={submitAuth}>
+          <img src="/petagenda-logo-v1.png" />
           <div className="email-container">
             <TextField
               helperText={error === 'Invalid email' ? error : ''}
