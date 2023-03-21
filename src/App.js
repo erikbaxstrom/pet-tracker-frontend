@@ -11,6 +11,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import NotFound from './components/NotFound.js';
 
 const themeLight = createTheme({
   palette: {
@@ -38,6 +39,7 @@ function App() {
               <Route exact path="/pets" component={PetList} />
               <Route exact path="/pets/:id" component={PetCard} />
               <Route exact path="/" component={Auth} />
+              <Route path="/*" component={NotFound} />
             </Switch>
           </div>
         </LocalizationProvider>
