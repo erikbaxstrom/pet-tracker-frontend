@@ -7,4 +7,4 @@ publish = 'build'
   from = "/api/*"
   to = "https://alch-pet-tracker.herokuapp.com/api/:splat"
   status = 200
-  force = true
+  
