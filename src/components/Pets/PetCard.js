@@ -19,7 +19,13 @@ export default function PetCard() {
   const { owners } = useOwners(id);
 
   if (loading) {
-    return <img src="fish.png" />;
+    return (
+      <div className="loading">
+        <div className="loading-container">
+          <img className="loading-img" src="/loading-state.gif" />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -28,7 +34,7 @@ export default function PetCard() {
 
   return (
     <div className="detail">
-      <div className="detail-container">
+      <div className="detail-container scaleUp">
         <h2>{detail.name}</h2>
         <TableContainer>
           <Table sx={{ minWidth: 500 }} aria-label="simple table">
