@@ -1,5 +1,6 @@
 // const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+const BASE_URL = 'https://pet-tracker.netlify.app';
 
 // export async function getUser() {
 //   const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
@@ -41,6 +42,12 @@ export async function signInUser(email, password) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      // 'Access-Control-Allow-Headers':
+      //   'Authorization, Accept,Origin,Content-Type,X-LS-CORS-Template,X-LS-Auth-Token,X-LS-Auth-User-Token,Content-Type,X-LS-Sync-Result,X-LS-Sequence,token',
+      // 'Access-Control-Allow-Origin': 'https://alch-pet-tracker.herokuapp.com',
+      // 'Access-Control-ExposeHeaders':
+      //   'Authorization, Accept,Origin,Content-Type,X-LS-CORS-Template,X-LS-Auth-Token,X-LS-Auth-User-Token,Content-Type,X-LS-Sync-Result,X-LS-Sequence,token',
+      // 'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify({ email, password }),
     credentials: 'include',
