@@ -10,7 +10,6 @@ export default function usePet(id) {
     const fetchData = async () => {
       try {
         const data = await fetchPetById(id);
-        console.log('data here', data);
         if (data.error) {
           setError(data.error);
           setDetail({});
