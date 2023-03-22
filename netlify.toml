@@ -5,6 +5,6 @@ publish = 'build'
 
 [[redirects]]
   from = "/api/v1/*"
-  to = "https://alch-pet-tracker.herokuapp.com/:splat"
+  to = "https://alch-pet-tracker.herokuapp.com"
   status = 200
   force = true
