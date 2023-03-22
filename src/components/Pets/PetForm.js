@@ -2,7 +2,6 @@ import { Button, MenuItem, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './PetForm.css';
-import usePet from '../../hooks/usePet.js';
 
 export default function PetForm({
   name = '',
