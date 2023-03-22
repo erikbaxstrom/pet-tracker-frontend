@@ -12,3 +12,46 @@
   align-items: center;
   flex-direction: column;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 600px;
+  background-color: #b0bbb0;
+  padding: 10px;
+  border-radius: 2%;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.scaleUp {
+  -webkit-animation: scaleUp 0.7s ease both;
+  -moz-animation: scaleUp 0.7s ease both;
+  animation: scaleUp 0.7s ease both;
+}
+
+@-webkit-keyframes scaleUp {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+  }
+}
+@-moz-keyframes scaleUp {
+  from {
+    opacity: 0;
+    -moz-transform: scale(0.8);
+  }
+}
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}

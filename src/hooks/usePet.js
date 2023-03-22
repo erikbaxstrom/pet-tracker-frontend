@@ -8,14 +8,21 @@ export default function usePet(id) {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
       try {
         const data = await fetchPetById(id);
-        setDetail(data);
+        if (data.error) {
+          setError(data.error);
+          setDetail({});
+          setLoading(true);
+        } else {
+          setDetail(data);
+        }
       } catch (e) {
         setError(e.message);
-        setLoading(false);
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 700);
     };
     fetchData();
   }, [id]);

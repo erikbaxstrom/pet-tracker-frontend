@@ -7,18 +7,20 @@ import { Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/materia
 export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { user, logInUser } = useUser();
+  const { user, logInUser, error, setError } = useUser();
   const { type } = useParams();
 
   if (user) {
     return <Redirect to="/pets" />;
   }
 
-  const submitAuth = async () => {
+  const submitAuth = async (e) => {
+    e.preventDefault();
     try {
       await logInUser(email, password, type);
     } catch (e) {
       console.error(e);
+      setError(e);
     }
   };
 
@@ -79,20 +81,25 @@ export default function Auth() {
         </Button>
       </header>
       <div className="auth-background">
-        <div className="auth-container">
+        <form className="auth-container" onSubmit={submitAuth}>
+          <img src="/petagenda-logo-v1.png" />
           <div className="email-container">
             <TextField
-              helperText="Please enter your email"
+              helperText={error === 'Invalid email' ? error : ''}
+              error={error === 'Invalid email' ? true : false}
               id="email-input"
               label="Email"
               variant="filled"
               defaultValue={email}
+              type="email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="password-container">
             <TextField
-              helperText="Please enter your password"
+              helperText={error === 'Invalid password' ? error : ''}
+              error={error === 'Invalid password' ? true : false}
               id="password-input"
               type="password"
               label="Password"
@@ -100,14 +107,15 @@ export default function Auth() {
               color="primary"
               defaultValue={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div>
-            <Button variant="contained" size="large" onClick={submitAuth}>
+            <Button variant="contained" size="large" type="submit">
               Submit
             </Button>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );

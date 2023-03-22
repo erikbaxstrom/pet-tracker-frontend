@@ -16,6 +16,7 @@ export default function PetForm({
   const [emergencyContactInput, setEmergencyContactInput] = useState(emergency_contact);
   const [vetInput, setVetInput] = useState(vet);
   const [notesInput, setNotesInput] = useState(notes);
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
 
   const handleFormSubmit = (e) => {
@@ -27,8 +28,21 @@ export default function PetForm({
   //   submitHandler(nameInput, breedInput, emergencyContactInput, vetInput, notesInput);
   // }}
 
+  if (loading) {
+    setTimeout(() => {
+      setLoading(false);
+    }, 700);
+    return (
+      <div className="loading">
+        <div className="loading-container">
+          <img className="loading-img" src="/loading-state.gif" />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="form">
+    <div className="form scaleUp">
       {/* <div className="form-container"> */}
       <form className="form-container" onSubmit={handleFormSubmit}>
         <TextField

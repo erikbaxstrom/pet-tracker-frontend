@@ -1,0 +1,22 @@
+#not-found {
+  margin: 0 auto;
+  width: 600px;
+  padding: 10px;
+  background-color: #b0bbb0;
+  border-radius: 2%;
+}
+
+img {
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* NavLink {
+  margin: 25px;
+} */
+
+/* NavLink {
+  padding: 1em;
+  display: block;
+} */

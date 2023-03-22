@@ -50,6 +50,7 @@ export async function fetchPetById(id) {
     return data;
   } else {
     console.error(data.message);
+    return { error: data.message };
   }
 }
 
@@ -86,5 +87,6 @@ export async function addOwner(petId, email) {
     return data;
   } else {
     console.error(data.message);
+    return { error: data.message };
   }
 }

@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { addOwner, updatePet } from '../../services/pets.js';
 import PetForm from './PetForm.js';
+import './PetForm.css';
 import usePet from '../../hooks/usePet.js';
 import useOwners from '../../hooks/useOwners.js';
 import { deleteOwner } from '../../services/owners.js';
@@ -10,24 +11,36 @@ import './EditPet.css';
 
 export default function EditPet() {
   const { id } = useParams();
-  const { detail, setError } = usePet(id);
+  const { detail, error } = usePet(id);
   const history = useHistory();
-
-  const handleSubmit = async (name, breed, emergency_contact, vet, notes) => {
-    try {
-      await updatePet(detail.id, name, breed, emergency_contact, vet, notes);
-      history.push('/pets');
-    } catch (e) {
-      setError(e.message);
-    }
-  };
-
+  const [userError, setUserError] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const { owners, setOwners } = useOwners(id);
 
-  const handleOwner = async () => {
+  const handleSubmit = async (name, breed, emergency_contact, vet, notes) => {
     try {
-      const newOwner = await addOwner(detail.id, emailInput);
+      await updatePet(id, name, breed, emergency_contact, vet, notes);
+      history.push('/pets');
+    } catch (e) {
+      setUserError(e.message);
+    }
+  };
+
+  if (error) {
+    history.push('/not-found/');
+  }
+
+  const handleOwner = async (e) => {
+    e.preventDefault();
+    try {
+      const newOwner = await addOwner(id, emailInput);
+      // console.log('newOwner', newOwner);
+      if (newOwner.error) {
+        // console.log('newOwner.error:', newOwner.error);
+        setUserError(newOwner.error);
+        return;
+      }
+      setUserError('');
       setOwners((prevOwners) => [...prevOwners, newOwner]);
       setEmailInput('');
     } catch (e) {
@@ -42,32 +55,37 @@ export default function EditPet() {
 
   return (
     <div>
-      <h2>{detail.name}</h2>
+      {/* <h2 className="scaleUp">{detail.name}</h2> */}
       <div>
         <PetForm key={detail.name} {...detail} submitHandler={handleSubmit} />
       </div>
-      <h2>Owners</h2>
-      <div className="owners">
+      <h2 className="scaleUp">Owners</h2>
+      <div className="owners scaleUp">
         <ul className="owners-list">
           {owners.map((owner) => (
             <li key={owner.email}>
               <span>{owner.email}</span>
-              <Button size="small" onClick={async () => await handleDelete(detail.id, owner)}>
+              <Button size="small" onClick={async () => await handleDelete(id, owner)}>
                 X
               </Button>
             </li>
           ))}
         </ul>
-        <TextField
-          helperText="Add an Owner"
-          label="New Owner"
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-        />
+        <form onSubmit={handleOwner}>
+          <TextField
+            helperText={userError !== '' ? userError : ''}
+            error={userError !== '' ? true : false}
+            label="New Owner"
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            required
+            type="email"
+          />
 
-        <Button size="small" variant="contained" onClick={() => handleOwner()}>
-          +
-        </Button>
+          <Button size="small" variant="contained" type="submit">
+            +
+          </Button>
+        </form>
       </div>
     </div>
   );

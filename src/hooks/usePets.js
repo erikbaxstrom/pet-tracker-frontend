@@ -12,11 +12,12 @@ export function usePets() {
       try {
         const data = await fetchPets();
         setPets(data);
-        setLoading(false);
       } catch (e) {
         setError(e.message);
-        setLoading(false);
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 700);
     };
     fetchData();
   }, []);

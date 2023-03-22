@@ -20,17 +20,22 @@ import dayjs from 'dayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
 
 export default function PetList() {
-  const { pets } = usePets();
+  const { pets, loading } = usePets();
   const { tasks, setError, setTasks } = useTasks();
 
   const [taskDescriptionInput, setTaskDescriptionInput] = useState('');
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
 
-
-  // if (!user) {
-  //   return <Redirect to="/auth/sign-in" />;
-  // }
+  if (loading) {
+    return (
+      <div className="loading">
+        <div className="loading-container">
+          <img className="loading-img" src="/loading-state.gif" />
+        </div>
+      </div>
+    );
+  }
 
   if (!localStorage.token) {
     return <Redirect to="/auth/sign-in" />;
@@ -45,7 +50,8 @@ export default function PetList() {
     }
   };
 
-  const handleAddTask = async () => {
+  const handleAddTask = async (e) => {
+    e.preventDefault();
     try {
       const newTask = await addTask({
         petId: taskPetInput,
@@ -89,8 +95,8 @@ export default function PetList() {
 
   return (
     <>
-      <h2>My Pets</h2>
-      <div className="pet-list">
+      <h2 className="scaleUp">My Pets</h2>
+      <div className="pet-list scaleUp">
         {pets.map((pet) => (
           <div className="pet-card" key={pet.id}>
             <NavLink
@@ -104,14 +110,15 @@ export default function PetList() {
           </div>
         ))}
       </div>
-      <h2>Tasks</h2>
-      <div className="task-list">
-        <div className="task-form">
+      <h2 className="scaleUp">Tasks</h2>
+      <div className="task-list scaleUp">
+        <form className="task-form" onSubmit={handleAddTask}>
           <TextField
             helperText="Add Task"
             label="New Task"
             value={taskDescriptionInput}
             onChange={(e) => setTaskDescriptionInput(e.target.value)}
+            required
           />
           <DateTimePicker
             value={taskTimeInput}
@@ -119,17 +126,17 @@ export default function PetList() {
               setTaskTimeInput(e);
             }}
           />
-          <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)}>
+          <Select value={taskPetInput} onChange={(e) => setTaskPetInput(e.target.value)} required>
             {pets.map((pet) => (
               <MenuItem key={pet.id} value={pet.id}>
                 {pet.name}
               </MenuItem>
             ))}
           </Select>
-          <Button size="small" variant="contained" onClick={() => handleAddTask()}>
+          <Button size="small" variant="contained" type="submit">
             +
           </Button>
-        </div>
+        </form>
         <TableContainer>
           <Table sx={{ minWidth: 500 }} aria-label="simple table">
             <TableHead>
