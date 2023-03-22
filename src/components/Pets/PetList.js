@@ -20,16 +20,22 @@ import dayjs from 'dayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
 
 export default function PetList() {
-  const { pets } = usePets();
+  const { pets, loading } = usePets();
   const { tasks, setError, setTasks } = useTasks();
 
   const [taskDescriptionInput, setTaskDescriptionInput] = useState('');
   const [taskPetInput, setTaskPetInput] = useState('');
   const [taskTimeInput, setTaskTimeInput] = useState(dayjs());
 
-  // if (!user) {
-  //   return <Redirect to="/auth/sign-in" />;
-  // }
+  if (loading) {
+    return (
+      <div className="loading">
+        <div className="loading-container">
+          <img className="loading-img" src="/loading-state.gif" />
+        </div>
+      </div>
+    );
+  }
 
   if (!localStorage.token) {
     return <Redirect to="/auth/sign-in" />;
@@ -89,8 +95,8 @@ export default function PetList() {
 
   return (
     <>
-      <h2>My Pets</h2>
-      <div className="pet-list">
+      <h2 className="scaleUp">My Pets</h2>
+      <div className="pet-list scaleUp">
         {pets.map((pet) => (
           <div className="pet-card" key={pet.id}>
             <NavLink
@@ -104,8 +110,8 @@ export default function PetList() {
           </div>
         ))}
       </div>
-      <h2>Tasks</h2>
-      <div className="task-list">
+      <h2 className="scaleUp">Tasks</h2>
+      <div className="task-list scaleUp">
         <form className="task-form" onSubmit={handleAddTask}>
           <TextField
             helperText="Add Task"
