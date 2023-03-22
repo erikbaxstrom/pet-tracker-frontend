@@ -4,7 +4,7 @@ functions = 'functions'
 publish = 'build'
 
 [[redirects]]
-  from = "https://netlify.pet-tracker.app/api/v1/*"
+  from = "/api/v1/*"
   to = "https://alch-pet-tracker.herokuapp.com/:splat"
   status = 200
   force = true
