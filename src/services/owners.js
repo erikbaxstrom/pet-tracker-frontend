@@ -1,6 +1,6 @@
 // const BASE_URL = 'http://localhost:7890';
-// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
-const BASE_URL = 'https://pet-tracker.netlify.app';
+const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://pet-tracker.netlify.app';
 
 export async function addOwner(petId, email) {
   const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
