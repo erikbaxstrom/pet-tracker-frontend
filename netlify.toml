@@ -2,9 +2,3 @@
 command = 'npm run build'
 functions = 'functions'
 publish = 'build'
-
-[[redirects]]
-  from = "/api/*"
-  to = "https://alch-pet-tracker.herokuapp.com/api/:splat"
-  status = 200
-  
