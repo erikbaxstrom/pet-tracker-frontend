@@ -1,9 +1,9 @@
 // const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 // const BASE_URL = 'https://pet-tracker.netlify.app';
 
 export async function addOwner(petId, email) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
+  const resp = await fetch(`/api/v1/pets/${petId}/owners`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -21,7 +21,7 @@ export async function addOwner(petId, email) {
 }
 
 export async function fetchOwners(petId) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
+  const resp = await fetch(`/api/v1/pets/${petId}/owners`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -38,7 +38,7 @@ export async function fetchOwners(petId) {
 }
 
 export async function deleteOwner(petId, user_id) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
+  const resp = await fetch(`/api/v1/pets/${petId}/owners`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
