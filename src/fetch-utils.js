@@ -1,5 +1,5 @@
 // const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 // export async function getUser() {
 //   const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
@@ -17,7 +17,7 @@ const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 // }
 
 export async function signUpUser(email, password) {
-  const resp = await fetch(`${BASE_URL}/api/v1/users`, {
+  const resp = await fetch(`/api/v1/users`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -36,7 +36,7 @@ export async function signUpUser(email, password) {
 }
 
 export async function signInUser(email, password) {
-  const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
+  const resp = await fetch(`/api/v1/users/sessions`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -56,7 +56,7 @@ export async function signInUser(email, password) {
 }
 
 export async function signOutUser() {
-  const resp = await fetch(`${BASE_URL}/api/v1/users/sessions`, {
+  const resp = await fetch(`/api/v1/users/sessions`, {
     method: 'DELETE',
     credentials: 'include',
   });

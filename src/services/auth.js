@@ -1,10 +1,10 @@
 import { signInUser, signOutUser, signUpUser } from '../fetch-utils.js';
 
 // const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 export async function getUser() {
-  const resp = await fetch(`${BASE_URL}/api/v1/users/me`, {
+  const resp = await fetch(`/api/v1/users/me`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

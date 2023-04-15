@@ -1,8 +1,8 @@
 // const BASE_URL = 'http://localhost:7890';
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 
 export async function addPet(name, breed, emergency_contact, vet, notes) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets`, {
+  const resp = await fetch(`/api/v1/pets`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -20,7 +20,7 @@ export async function addPet(name, breed, emergency_contact, vet, notes) {
 }
 
 export async function fetchPets() {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets`, {
+  const resp = await fetch(`/api/v1/pets`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -37,7 +37,7 @@ export async function fetchPets() {
 }
 
 export async function fetchPetById(id) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${id}`, {
+  const resp = await fetch(`/api/v1/pets/${id}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -54,7 +54,7 @@ export async function fetchPetById(id) {
 }
 
 export async function updatePet(id, name, breed, emergency_contact, vet, notes) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${id}`, {
+  const resp = await fetch(`/api/v1/pets/${id}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -72,7 +72,7 @@ export async function updatePet(id, name, breed, emergency_contact, vet, notes) 
 }
 
 export async function addOwner(petId, email) {
-  const resp = await fetch(`${BASE_URL}/api/v1/pets/${petId}/owners`, {
+  const resp = await fetch(`/api/v1/pets/${petId}/owners`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

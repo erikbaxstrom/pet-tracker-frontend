@@ -1,8 +1,8 @@
-const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
+// const BASE_URL = 'https://alch-pet-tracker.herokuapp.com';
 // const BASE_URL = 'http://localhost:7890';
 
 export async function fetchTasks() {
-  const resp = await fetch(`${BASE_URL}/api/v1/tasks`, {
+  const resp = await fetch(`/api/v1/tasks`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -19,7 +19,7 @@ export async function fetchTasks() {
 }
 
 export async function addTask(task) {
-  const resp = await fetch(`${BASE_URL}/api/v1/tasks/pet/${task.petId}`, {
+  const resp = await fetch(`/api/v1/tasks/pet/${task.petId}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -37,7 +37,7 @@ export async function addTask(task) {
 }
 
 export async function updateTask(task) {
-  const resp = await fetch(`${BASE_URL}/api/v1/tasks/${task.id}`, {
+  const resp = await fetch(`/api/v1/tasks/${task.id}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -55,7 +55,7 @@ export async function updateTask(task) {
 }
 
 export async function deleteTask(taskId) {
-  const resp = await fetch(`${BASE_URL}/api/v1/tasks/${taskId}`, {
+  const resp = await fetch(`/api/v1/tasks/${taskId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
